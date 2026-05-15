@@ -1,0 +1,11 @@
+def read_logs(file):
+    with open(file, 'r') as f:
+        return f.read()
+
+tools.append(
+    Tool(
+        name="ReadLogs",
+        func=read_logs,
+        description="Reads server log files"
+    )
+)
