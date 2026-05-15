@@ -1,0 +1,27 @@
+from langchain.agents import initialize_agent, Tool
+from langchain.llms import OpenAI
+import subprocess
+
+# Tool: Run shell command
+def run_command(cmd):
+    return subprocess.getoutput(cmd)
+
+tools = [
+    Tool(
+        name="Shell",
+        func=run_command,
+        description="Runs Linux shell commands"
+    )
+]
+
+llm = OpenAI(temperature=0)
+
+agent = initialize_agent(
+    tools,
+    llm,
+    agent="zero-shot-react-description",
+    verbose=True
+)
+
+# Test
+agent.run("Check disk usage and suggest optimization")
