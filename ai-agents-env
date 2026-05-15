@@ -1,0 +1,8 @@
+mkdir ai-agent
+cd ai-agent
+
+python3 -m venv venv
+source venv/bin/activate
+
+pip install langchain openai python-dotenv
+``
